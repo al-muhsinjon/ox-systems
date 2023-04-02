@@ -4,6 +4,7 @@ import posts from "../services/mainservices";
 
 const ProductsTable = () => {
   const [search, setSearch] = useState("");
+  const token = window.localStorage.token;
 
   const columns = [
     {
@@ -56,7 +57,7 @@ const ProductsTable = () => {
   const [dateh, setDateh] = useState([]);
   useEffect(() => {
     posts
-      .products()
+      .products(token)
       .then((res) => res.json())
       .then((datad) => setDateh(datad.items));
   }, []);
@@ -97,7 +98,6 @@ const ProductsTable = () => {
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
   };
-  // console.log(dateh);
   const rowSelection = {
     selectedRowKeys,
     onChange: onSelectChange,
@@ -105,17 +105,7 @@ const ProductsTable = () => {
   const hasSelected = selectedRowKeys.length > 0;
   return (
     <>
-      {/* <div style={{ width: 200, marginLeft: 100 }}>
-        <Tabs
-          defaultActiveKey="1"
-          tabPosition={true}
-          style={{
-            height: 100,
-          }}
-          items={dataa}
-          children="Content of tab "
-        />
-      </div> */}
+    
       <div>
         <div
           style={{

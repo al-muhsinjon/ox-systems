@@ -22,7 +22,6 @@ const Login = () => {
   };
 
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
     setUserName(values.userName);
     setPassword(values.password);
     setSubdomain(values.subdomain);
