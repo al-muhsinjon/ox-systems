@@ -6,7 +6,7 @@ import Home from "./Home";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter >
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/" element={<Home2 />} />
