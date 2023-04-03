@@ -63,62 +63,6 @@ const Home = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  return (
-    <Layout>
-      <div style={{ position: "fixed", top: 0 }}>
-        <Sider
-          className="side"
-          width={300}
-          trigger={null}
-          collapsible
-          collapsed={collapsed}
-          // position={fixed}
-        >
-          <div className="logo">
-            <img
-              src={logo}
-              className={collapsed ? "hidden" : "visible"}
-              alt=""
-            />
-
-            <Button type="dashed" onClick={toggleCollapsed}>
-              {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </Button>
-          </div>
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            items={items}
-          />
-        </Sider>
-      </div>
-      <div>
-        
-        <Layout className="site-layout">
-          <Header
-            style={{
-              padding: 0,
-              background: colorBgContainer,
-            }}
-            >
-
-          </Header>
-          <div style={{ width: 30 + "%", marginLeft: 280 }}>
-            <Content
-              style={{
-                margin: "24px 16px",
-                padding: 24,
-                minHeight: 280,
-                background: colorBgContainer,
-              }}
-            >
-              <ProductsTable />
-            </Content>
-          </div>
-        </Layout>
-      </div>
-    </Layout>
-  );
+  return ;
 };
 export default Home;

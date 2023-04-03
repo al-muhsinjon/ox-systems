@@ -1,4 +1,4 @@
-import { Button, Input, Switch, Table, Tabs } from "antd";
+import { Button, Input, Segmented, Switch, Table, Tabs } from "antd";
 import { useEffect, useState } from "react";
 import posts from "../services/mainservices";
 
@@ -45,12 +45,40 @@ const ProductsTable = () => {
       dataIndex: "count",
     },
     {
-      title: "Shippable",
-      dataIndex: "shippable",
+      title: "Price-per-one",
+      dataIndex: "sellPrice",
     },
     {
-      title: "Show-market",
-      dataIndex: "showMarket",
+      title: "TotalPrice-per-one",
+      dataIndex: "totalPrice",
+    },
+    {
+      title: "Chegirma",
+      dataIndex: "chegir",
+    },
+    {
+      title: "Discount",
+      dataIndex: "diskount",
+    },
+    {
+      title: "Supplyprice-per-one",
+      dataIndex: "supplyPrice",
+    },
+    {
+      title: "Total-supply-price",
+      dataIndex: "supplyPrice",
+    },
+    {
+      title: "Тип",
+      dataIndex: "productProperties",
+    },
+    {
+      title: "Пол",
+      dataIndex: "productProperties1",
+    },
+    {
+      title: "Торговая...",
+      dataIndex: "marka",
     },
   ];
 
@@ -75,6 +103,15 @@ const ProductsTable = () => {
       showMarket: <Switch checked={element.showMarket} />,
       count: element.stocks[0].count + element.unit,
       description: element.description,
+      stocks: element.stocks[0].count + element.unit,
+      sellPrice: element.stocks[0].sellPrice.UZS + " Uzs",
+      diskount: "-",
+      supplyPrice: "Uzs " + element.stocks[0].supplyPrice.UZS,
+      chegir: element.stocks[0].sellPrice.UZS + " Uzs",
+      totalSuply: element.stocks[0].sellPrice.UZS + " Uzs",
+      productProperties: element.productProperties[0].value,
+      productProperties1: element.productProperties[1].value,
+      marka: element.productProperties[2].value,
     });
   });
 
@@ -82,7 +119,7 @@ const ProductsTable = () => {
   dateh.forEach((element) => {
     tabData.push({
       key: element.id,
-      name: element.productName,
+      name: element.name,
     });
   });
 
@@ -101,11 +138,14 @@ const ProductsTable = () => {
   const rowSelection = {
     selectedRowKeys,
     onChange: onSelectChange,
+   
   };
+
+  // console.log(rowSelection)
+
   const hasSelected = selectedRowKeys.length > 0;
   return (
     <>
-    
       <div>
         <div
           style={{
@@ -123,11 +163,9 @@ const ProductsTable = () => {
           </Button>
           <span
             style={{
-              marginLeft: 150,
+              marginLeft: 10,
             }}
-          >
-            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
-          </span>
+          ></span>
           <Input.Search
             onSearch={(value) => {
               setSearch(value);
